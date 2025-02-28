@@ -13,17 +13,20 @@ internal class Solution
         {
             if (price < bought)
             {
+                // Set new lowest price
                 bought = price;
                 sold = price;
             }
 
             if (price > sold)
             {
+                // Set new highest price
                 sold = price;
             }
 
             var currentProfit = price - bought;
 
+            // Check if this makes us more profit
             if (currentProfit > profit)
             {
                 profit = currentProfit;
@@ -31,6 +34,7 @@ internal class Solution
 
             if (currentProfit < profit)
             {
+                // Sell at previous highest profit and reset
                 totalProfit += profit;
                 bought = price;
                 sold = price;
@@ -38,13 +42,18 @@ internal class Solution
             }
         }
 
-        return totalProfit + profit;
+        // Sell up any remaining stock
+        totalProfit += profit;
+
+        return totalProfit;
     }
 
     public static int MaxProfit2(int[] prices)
     {
         var profit = 0;
 
+        // Always selling and buying again if the price is higher on the
+        // next day is equivalent to buying low and selling high!
         for (var i = 1; i < prices.Length; i++)
         {
             if (prices[i] > prices[i - 1])
