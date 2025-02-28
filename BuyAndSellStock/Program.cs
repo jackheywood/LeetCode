@@ -2,27 +2,36 @@
 
 int[][] testPrices =
 [
-    new[] { 7, 1, 5, 3, 6, 4 },
-    new[] { 1, 2, 3, 4, 5 },
-    new[] { 7, 6, 4, 3, 1 },
+    [7, 1, 5, 3, 6, 4],
+    [1, 2, 3, 4, 5],
+    [7, 6, 4, 3, 1],
 ];
 
-var profits1 = testPrices.Select(Solution.MaxProfit1);
-var profits2 = testPrices.Select(Solution.MaxProfit2);
+var profits1 = testPrices.Select(Solution.MaxProfit1).ToList();
+var profits2 = testPrices.Select(Solution.MaxProfit2).ToList();
 
-Console.WriteLine("Solution 1:");
+WriteSolution(1, profits1);
+WriteSolution(2, profits2);
 
-foreach (var profit in profits1)
+WriteExit();
+
+return;
+
+void WriteSolution(int solutionId, List<int> profits)
 {
-    Console.WriteLine(profit);
+    Console.WriteLine($"==== Solution {solutionId} ====\n");
+
+    for (var i = 0; i < testPrices.Length; i++)
+    {
+        Console.WriteLine($"Test data: [{string.Join(", ", testPrices[i])}]");
+        Console.WriteLine($"Max profit: {profits[i]}\n");
+    }
+
+    Console.WriteLine();
 }
 
-Console.WriteLine("\nSolution 2:");
-
-foreach (var profit in profits2)
+void WriteExit()
 {
-    Console.WriteLine(profit);
+    Console.WriteLine("\nPress any key to exit...");
+    Console.ReadKey();
 }
-
-Console.WriteLine("\nPress any key to exit...");
-Console.ReadKey();

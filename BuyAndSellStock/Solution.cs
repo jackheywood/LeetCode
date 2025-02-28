@@ -2,7 +2,7 @@
 
 internal class Solution
 {
-    public static int MaxProfit1(int[] prices)
+    internal static int MaxProfit1(int[] prices)
     {
         var totalProfit = 0;
         var profit = 0;
@@ -48,7 +48,7 @@ internal class Solution
         return totalProfit;
     }
 
-    public static int MaxProfit2(int[] prices)
+    internal static int MaxProfit2(int[] prices)
     {
         var profit = 0;
 
