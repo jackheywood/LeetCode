@@ -4,16 +4,15 @@ internal class Solution
 {
     internal static bool CanJump(int[] nums)
     {
-        var i = 0;
         var maxReach = 0;
 
-        while (i < nums.Length && i <= maxReach)
+        for (var i = 0; i < nums.Length; i++)
         {
+            if (i > maxReach) return false;
             maxReach = Math.Max(maxReach, i + nums[i]);
-            if (maxReach == nums.Length) return true;
-            i++;
+            if (maxReach >= nums.Length - 1) return true;
         }
 
-        return i == nums.Length;
+        return true;
     }
 }
