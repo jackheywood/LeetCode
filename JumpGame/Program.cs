@@ -19,7 +19,7 @@ int[][] testNums =
     [5, 9, 3, 2, 1, 0, 2, 3, 3, 1, 0, 0],
 ];
 
-var canJumps = testNums.Select(Solution.CanJumpGreedyRecursive).ToList();
+var canJumps = testNums.Select(Solution.CanJump).ToList();
 
 WriteSolution(canJumps);
 

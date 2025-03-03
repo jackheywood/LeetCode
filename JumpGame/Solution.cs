@@ -2,64 +2,18 @@
 
 internal class Solution
 {
-    // Too slow
-    internal static bool CanJumpRecursive(int[] nums)
+    internal static bool CanJump(int[] nums)
     {
-        var jumpLength = nums[0];
+        var i = 0;
+        var maxReach = 0;
 
-        if (jumpLength >= nums.Length - 1)
+        while (i < nums.Length && i <= maxReach)
         {
-            return true;
+            maxReach = Math.Max(maxReach, i + nums[i]);
+            if (maxReach == nums.Length) return true;
+            i++;
         }
 
-        for (var i = jumpLength; i > 0; i--)
-        {
-            if (CanJumpRecursive(nums[i..])) return true;
-        }
-
-        return false;
-    }
-
-    // Faster, but doesn't work...
-    internal static bool CanJumpGreedy(int[] nums)
-    {
-        var jumpLength = nums[0];
-
-        if (jumpLength >= nums.Length - 1)
-        {
-            return true;
-        }
-
-        var maxJump = 0;
-        var maxIndex = 0;
-
-        for (var i = 1; i <= jumpLength; i++)
-        {
-            if (nums[i] <= maxJump) continue;
-            maxJump = nums[i];
-            maxIndex = i;
-        }
-
-        return maxJump != 0 && CanJumpGreedy(nums[maxIndex..]);
-    }
-
-    internal static bool CanJumpGreedyRecursive(int[] nums)
-    {
-        var jumpLength = nums[0];
-
-        if (jumpLength >= nums.Length - 1)
-        {
-            return true;
-        }
-
-        var possibleJumps = Enumerable.Range(1, jumpLength);
-        var orderedJumps = possibleJumps.OrderByDescending(j => nums[j]).ToList();
-
-        foreach (var jump in orderedJumps)
-        {
-            if (CanJumpGreedyRecursive(nums[jump..])) return true;
-        }
-
-        return false;
+        return i == nums.Length;
     }
 }
