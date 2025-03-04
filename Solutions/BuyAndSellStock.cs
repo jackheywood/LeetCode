@@ -1,8 +1,8 @@
-﻿namespace BuyAndSellStock;
+﻿namespace Solutions;
 
-internal class Solution
+public class BuyAndSellStock
 {
-    internal static int MaxProfit1(int[] prices)
+    public static int MaxProfit1(int[] prices)
     {
         var totalProfit = 0;
         var profit = 0;
@@ -48,7 +48,7 @@ internal class Solution
         return totalProfit;
     }
 
-    internal static int MaxProfit2(int[] prices)
+    public static int MaxProfit2(int[] prices)
     {
         var profit = 0;
 

@@ -1,8 +1,8 @@
-﻿namespace JumpGame;
+﻿namespace Solutions;
 
-internal class Solution
+public class JumpGame
 {
-    internal static bool CanJump(int[] nums)
+    public static bool CanJump(int[] nums)
     {
         var maxReach = 0;
 
