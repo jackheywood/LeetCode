@@ -2,6 +2,19 @@
 
 public class RomanToInteger
 {
+    private static readonly ushort[] RomanValues = new ushort[256];
+
+    static RomanToInteger()
+    {
+        RomanValues['I'] = 1;
+        RomanValues['V'] = 5;
+        RomanValues['X'] = 10;
+        RomanValues['L'] = 50;
+        RomanValues['C'] = 100;
+        RomanValues['D'] = 500;
+        RomanValues['M'] = 1000;
+    }
+
     public static int RomanToIntForward(string s)
     {
         if (s.Length == 0) return 0;
@@ -58,15 +71,5 @@ public class RomanToInteger
         return total;
     }
 
-    private static int GetRomanValue(char numeral) => numeral switch
-    {
-        'I' => 1,
-        'V' => 5,
-        'X' => 10,
-        'L' => 50,
-        'C' => 100,
-        'D' => 500,
-        'M' => 1000,
-        _ => throw new ArgumentException("Invalid Roman numeral"),
-    };
+    private static int GetRomanValue(char numeral) => RomanValues[numeral];
 }
